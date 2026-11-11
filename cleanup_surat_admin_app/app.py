@@ -27,6 +27,8 @@ def Login():
 
 LoginVal = Login()
 
-while LoginVal == 1:
+if LoginVal == 1:
     pg = st.navigation([st.Page('pages/volunteer.py', title='Volunteers'), st.Page('pages/orgianzation.py', title='Organization want to join')])
     pg.run
+else:
+    st.text('Wrong User Details')
