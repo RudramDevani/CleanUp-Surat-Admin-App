@@ -6,16 +6,6 @@ from supabase import create_client, Client
 
 st.set_page_config(page_title='CleanUp Admin')
 
-# Supabase Setup
-
-@st.cache_resource
-def init_connection() -> Client:
-    url=st.secrets['SUPABASE_URL']
-    key=st.secrets['SUPABASE_KEY']
-    return create_client(url, key)
-
-sb = init_connection()
-
 # app setup
 
 st.title('CleanUp Surat Admin App', text_alignment='center')
