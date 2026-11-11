@@ -21,7 +21,7 @@ pg = st.navigation([
     st.Page('pages/events.py', title="Upcomming Events"),
     st.Page('pages/newsletter.py', title="Newsletters Inquiry")
 ])
-
+pg.run()
 st.divider()
 st.caption('Created For CleanUp Surat')
 st.caption('By Rudram Devani')
