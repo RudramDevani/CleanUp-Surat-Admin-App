@@ -1,6 +1,4 @@
 import streamlit as st
-import pandas as pd
-from supabase import create_client, Client
 
 #page Setup
 
@@ -11,24 +9,13 @@ st.set_page_config(page_title='CleanUp Admin')
 st.title('CleanUp Surat Admin App', text_alignment='center')
 st.text("Welcome to CleanUp Surat's Admin Page, here, this app will help you out in uploading images in your website, getting the data of volunteers, reported spot, item adoption, etc.")
 st.warning("use it wisely as the changes here will affect in the website too.")
-
-def Login():
-    if "AdmDet" not in st.session_state:
-        st.session_state.AdmDet = []
-    adm = st.text_input("User Name", placeholder="Enter Here")
-    pwd = st.text_input("Password", type='password')
-    st.session_state.AdmDet.append(adm)
-    st.session_state.AdmDet.append(pwd)
-    User = ['CleanUp1407', 'CleanUp@1407']
-    if st.session_state.AdmDet == User:
-        return 1
-    else:
-        return 0
-
-LoginVal = Login()
-
-if LoginVal == 1:
-    pg = st.navigation([st.Page('pages/volunteer.py', title='Volunteers'), st.Page('pages/orgianzation.py', title='Organization want to join')])
-    pg.run
-else:
-    st.text('Wrong User Details')
+st.divider()
+st.text('This is the app page use slider to access Other pages which are as follows:')
+st.text('Volunteer: Here you will get data of all volunteers who have filled the form in the website of CleanUp Surat')
+st.text('Organisation: Data of Requests of Organizations who want to join the drive')
+st.text('Adoption: Here you will be abel to do both: \n    1) Add the Items for Adoption page \n   2) Get data of who are interested in that applied item')
+st.text('Reported Spots: Here you will get the details of the spot which are reported and actions are not taken')
+st.text('Add Image: Here You will able to add Images to the gallery of Website')
+st.text('Contact: Here you will get the data of the one who have contacted us')
+st.text('Events: From this we will be able to add the details of upcomming events in our website')
+st.text('Newsletters: Here we will able to get who wants the newsletter from us')
