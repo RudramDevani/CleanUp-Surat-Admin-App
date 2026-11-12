@@ -36,4 +36,8 @@ img_id = st.text_input("Enter the id for images for that spot")
 
 for i in url_row:
     if i['id'] == img_id:
-        st.text('getting image url')
+        img_url = i['image_url']
+        if img_url != None:
+            st.link_button(label="Click for Image", url=img_url)
+        else:
+            st.text("No Image attached!")
