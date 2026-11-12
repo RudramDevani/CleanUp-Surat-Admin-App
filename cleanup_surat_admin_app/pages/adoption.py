@@ -57,5 +57,5 @@ if st.button("Insert the data"):
 
 item_id = st.text_input('Enter the "item id" here you want to delete the data')
 
-if st.button('Delete The Data'):
+if st.button('Delete Data'):
     sb.table(tab1).delete().eq('id', item_id).execute()
