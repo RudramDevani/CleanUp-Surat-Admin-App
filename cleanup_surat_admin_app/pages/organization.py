@@ -16,7 +16,7 @@ tab = "organizations"
 # pag setup
 
 st.title("Organization Management Page", text_alignment="center")
-st.text("Here you will get the data of the all the organizations who want to collab with CleanUp Surat in next drives")
+st.text("Here you will get the data of the all the organizations who want to collab with CleanUp Surat in next drives", text_alignment="center")
 
 rows = sb.table(tab).select('*').execute().data
 st.dataframe(pd.DataFrame(rows), hide_index=True)
