@@ -26,5 +26,5 @@ spt_id = st.text_input('Enter the "id" here you want to delete the data')
 if st.button('Delete The Data'):
     sb.table(tab).delete().eq('id', spt_id).execute()
 
-url_row = sb.table(tab).select("image_url").execute().data
+url_row = sb.table(tab).select("id","image_url").execute().data
 st.text(url_row)
