@@ -29,7 +29,6 @@ if st.button('Delete The Data'):
 # image getting
 
 url_row = sb.table(tab).select("id", "image_url").execute().data
-st.text(url_row)
 
 st.subheader("Get Images for Spot")
 img_id = st.text_input("Enter the id for images for that spot")
