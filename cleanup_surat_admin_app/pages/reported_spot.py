@@ -26,5 +26,14 @@ spt_id = st.text_input('Enter the "id" here you want to delete the data')
 if st.button('Delete The Data'):
     sb.table(tab).delete().eq('id', spt_id).execute()
 
-url_row = sb.table(tab).select("id","image_url").execute().data
+# image getting
+
+url_row = sb.table(tab).select("id", "image_url").execute().data
 st.text(url_row)
+
+st.subheader("Get Images for Spot")
+img_id = st.text_input("Enter the id for images for that spot")
+
+for i in url_row:
+    if i[id] == img_id:
+        st.text('getting image url')
