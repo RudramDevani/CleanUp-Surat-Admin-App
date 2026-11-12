@@ -42,7 +42,7 @@ cat = st.text_input("Category")
 cond = st.text_input("Condition")
 fnd_at = st.text_input("Found at")
 photo = st.file_uploader('Upload Image of item')
-if st.button('Upload Image'):
+if st.button('Upload Image') and photo !=None:
     sb.storage.from_('items').upload(
         path=photo.name,
         file=photo.getvalue(),
