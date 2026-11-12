@@ -19,7 +19,7 @@ tab2 = "item_adoptions"
 st.title("Adopt-an-Item Page", text_alignment="center")
 st.text("Here you will able to know about the adoption items inquiries the people want to adopt, also you will able to add items for adoption", text_alignment="center")
 
-st.subheader("Inquires for Adoption0")
+st.subheader("Inquires for Adoption")
 
 rows = sb.table(tab2).select('*').execute().data
 st.dataframe(pd.DataFrame(rows), hide_index=True)
