@@ -35,5 +35,5 @@ st.subheader("Get Images for Spot")
 img_id = st.text_input("Enter the id for images for that spot")
 
 for i in url_row:
-    if i[id] == img_id:
+    if i['id'] == img_id:
         st.text('getting image url')
