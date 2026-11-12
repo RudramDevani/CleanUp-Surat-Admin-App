@@ -11,8 +11,15 @@ def init_connection() -> Client:
 
 sb = init_connection()
 
+tab = 'volunteers'
+
 st.title('Volunteers Page Management', text_alignment='center')
 st.text('Here you will get he data of Volunteers who want to join', text_alignment='center')
 
-rows = sb.table('volunteers').select('*').execute().data
-st.dataframe(pd.DataFrame(rows))
+rows = sb.table(tab).select('*').execute().data
+st.dataframe(pd.DataFrame(rows), hide_index=True)
+
+vol_id = st.text_input('Enter the "id" here you want to delete the data')
+
+if st.button('Delete The Data'):
+    sb.table(tab).delete().eq('id', vol_id).execute()
