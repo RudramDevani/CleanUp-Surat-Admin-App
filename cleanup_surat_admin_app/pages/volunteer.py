@@ -14,7 +14,7 @@ sb = init_connection()
 tab = 'volunteers'
 
 st.title('Volunteers Page Management', text_alignment='center')
-st.text('Here you will get he data of Volunteers who want to join', text_alignment='center')
+st.text('Here you will get the data of Volunteers who want to join', text_alignment='center')
 
 rows = sb.table(tab).select('*').execute().data
 st.dataframe(pd.DataFrame(rows), hide_index=True)
