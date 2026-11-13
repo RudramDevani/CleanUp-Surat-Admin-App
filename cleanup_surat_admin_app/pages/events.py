@@ -16,6 +16,7 @@ tab = 'events'
 # page setup
 
 st.title("Upcomming Event Page", text_alignment="center")
+st.text('Here you will be able to modify the upcomming events', text_alignment='center')
 
 rows = sb.table(tab).select('*').execute().data
 st.dataframe(pd.DataFrame(rows), hide_index=True)
