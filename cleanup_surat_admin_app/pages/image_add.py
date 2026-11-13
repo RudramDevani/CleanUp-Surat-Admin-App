@@ -11,6 +11,8 @@ def init_connection() -> Client:
 
 sb = init_connection()
 
+# app setup
+
 st.title("Add Image Page", text_alignment="center")
 st.text("Here you will be able to manage the gallery by uploading the photos of drive", text_alignment='center')
 
@@ -37,3 +39,12 @@ try:
         st.success('Image Uploaded')
 except Exception:
     st.error('Upload Image')
+
+# to see the image
+
+viewimg = st.text_input("Image path for viewing that image")
+if viewimg != None:
+    imgurl = sb.storage.from_('gallery').get_public_url(f'{fldr}/{viewimg}')
+    st.link_button(label="View Image", url=imgurl)
+else:
+    st.text('Write the Image Path')
