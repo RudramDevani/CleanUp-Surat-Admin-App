@@ -21,7 +21,7 @@ st.text('Here you will get the data of the people tried to contact', text_alignm
 rows = sb.table(tab).select('*').execute().data
 st.dataframe(pd.DataFrame(rows), hide_index=True)
 
-inq_id = st.text_input('Enter the "id" here you want to delete the data')
+cnt_info = st.text_input('Enter the "id" here you want to delete the data')
 
 if st.button('Delete The Data'):
-    sb.table(tab).delete().eq('id', inq_id).execute()
+    sb.table(tab).delete().eq('id', cnt_info).execute()
