@@ -37,5 +37,5 @@ uedt = st.datetime_input('Date and Time of Event')
 uel = st.text_input('Location')
 
 if st.button('Add Upcomming Event'):
-    sb.table(tab).insert({'title': uet, 'descripton': ued, 'date': uedt, 'location': uel}).execute()
+    sb.table(tab).insert({'title': uet, 'description': ued, 'date': uedt, 'location': uel}).execute()
     st.success("Data Added")
