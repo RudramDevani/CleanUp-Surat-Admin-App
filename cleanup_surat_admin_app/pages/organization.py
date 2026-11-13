@@ -25,3 +25,4 @@ org_id = st.text_input('Enter the "id" here you want to delete the data')
 
 if st.button('Delete The Data'):
     sb.table(tab).delete().eq('id', org_id).execute()
+    st.success('Data removed')
