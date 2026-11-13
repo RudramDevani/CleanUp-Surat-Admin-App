@@ -27,6 +27,8 @@ for i in imglist:
     datatab.append(rowdict)
 st.dataframe(pd.DataFrame(datatab), hide_index=True)
 
+st.subheader('Upload Images')
+
 try:
     imag = st.file_uploader("Upload Photo")
     iname = imag.name.replace(' ','_')
@@ -42,9 +44,21 @@ except Exception:
 
 # to see the image
 
+st.subheader('View Images')
+
 viewimg = st.text_input("Image path for viewing that image")
 if viewimg != None:
     imgurl = sb.storage.from_('gallery').get_public_url(f'{fldr}/{viewimg}')
     st.link_button(label="View Image", url=imgurl)
 else:
     st.text('Write the Image Path')
+
+# Remove Images
+
+st.subheader('Remove Image')
+
+delimg = st.text_input('Image path for deleting that image')
+if delimg != None:
+    delpath = f'{fldr}/{delimg}'
+    sb.storage.from_('gallery').remove([delpath])
+    st.success('Image removed')
