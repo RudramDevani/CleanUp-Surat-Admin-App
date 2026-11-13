@@ -58,7 +58,7 @@ else:
 st.subheader('Remove Image')
 
 delimg = st.text_input('Image path for deleting that image')
-if delimg != None:
+if delimg != None and st.button('Remove Image'):
     delpath = f'{fldr}/{delimg}'
     sb.storage.from_('gallery').remove([delpath])
     st.success('Image removed')
