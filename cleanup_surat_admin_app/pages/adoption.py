@@ -45,7 +45,7 @@ try:
     photo = st.file_uploader('Upload Image of item')
     if photo and st.button('Upload Image'):
         sb.storage.from_('items').upload(
-            path=photo.name,
+            path=photo.name.replace(' ','_'),
             file=photo.getvalue(),
             file_options={'content-type': photo.type, 'upsert': 'true'}
         )
@@ -67,4 +67,4 @@ if st.button('Delete Data'):
     delpath = delpath_list[-1]
     st.text(delpath)
     #sb.table(tab1).delete().eq('id', item_id).execute()
-    
+ 
