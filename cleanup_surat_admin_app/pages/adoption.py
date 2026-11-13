@@ -66,6 +66,7 @@ if st.button('Delete Data'):
     delurl = delurl_list[0]['image_url']
     delpath_list = delurl.split('/')
     delpath = delpath_list[-1]
-    st.text(delpath)
     sb.table(tab1).delete().eq('id', item_id).execute()
     sb.storage.from_('items').remove([delpath])
+    st.success("Data removed")
+    
