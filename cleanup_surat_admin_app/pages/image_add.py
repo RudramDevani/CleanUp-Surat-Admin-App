@@ -13,9 +13,18 @@ sb = init_connection()
 
 st.title("Add Image Page", text_alignment="center")
 st.text("Here you will be able to manage the gallery by uploading the photos of drive", text_alignment='center')
+
 fldr = st.selectbox("Select the Folder", ['after','before','events','volunteers'])
+
 imglist  = sb.storage.from_('gallery').list(fldr)
-st.text(imglist)
+datatab = []
+for i in imglist:
+    rowdict = {}
+    rowdict['name']=i['name']
+    rowdict['id']=i['id']
+    datatab.append(rowdict)
+st.dataframe(pd.DataFrame(datatab), hide_index=True)
+
 try:
     imag = st.file_uploader("Upload Photo")
     iname = imag.name.replace(' ','_')
