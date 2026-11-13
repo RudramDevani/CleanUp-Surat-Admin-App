@@ -35,26 +35,28 @@ st.subheader("Give for Adoption")
 
 itemrows = sb.table(tab1).select('*').execute().data
 st.dataframe(pd.DataFrame(itemrows), hide_index=True)
+try:
+    name = st.text_input("Name of Item")
+    Des = st.text_area("Description")
+    cat = st.text_input("Category")
+    cond = st.text_input("Condition")
+    fnd_at = st.text_input("Found at")
+    photo = st.file_uploader('Upload Image of item')
+    if photo and st.button('Upload Image'):
+        sb.storage.from_('items').upload(
+            path=photo.name,
+            file=photo.getvalue(),
+            file_options={'content-type': photo.type, 'upsert': 'true'}
+        )
+        st.success("Photo uploaded successfully")
+    photourl = sb.storage.from_('items').get_public_url(photo.name)
+    stat = st.text_input("Status")
 
-name = st.text_input("Name of Item")
-Des = st.text_area("Description")
-cat = st.text_input("Category")
-cond = st.text_input("Condition")
-fnd_at = st.text_input("Found at")
-photo = st.file_uploader('Upload Image of item')
-if st.button('Upload Image') and photo !=None:
-    sb.storage.from_('items').upload(
-        path=photo.name,
-        file=photo.getvalue(),
-        file_options={'content-type': photo.type, 'upsert': 'true'}
-    )
-    st.success("Photo uploaded successfully")
-photourl = sb.storage.from_('items').get_public_url(photo.name)
-stat = st.text_input("Status")
-
-if st.button("Insert the data"):
-    sb.table(tab1).insert({'name': name, 'description': Des, 'category': cat, 'condition': cond, 'found_at': fnd_at, 'image_url': photourl, 'status': stat})
-
+    if st.button("Insert the data"):
+        sb.table(tab1).insert({'name': name, 'description': Des, 'category': cat, 'condition': cond, 'found_at': fnd_at, 'image_url': photourl, 'status': stat})
+except Exception:
+    st.text('Enter the Data Properly')
+    
 item_id = st.text_input('Enter the "item id" here you want to delete the data')
 
 if st.button('Delete Data'):
