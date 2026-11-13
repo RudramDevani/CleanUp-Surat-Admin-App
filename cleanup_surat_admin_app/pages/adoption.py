@@ -52,6 +52,9 @@ try:
     photourl = sb.storage.from_('items').get_public_url(photo.name)
     stat = st.text_input("Status")
     st.text(photourl)
+    if st.button("Insert the data"):
+        sb.table(tab1).insert({'name': name, 'description': Des, 'category': cat, 'condition': cond, 'found_at': fnd_at, 'image_url': photourl, 'status': stat})
+
 
 except Exception:
     st.text('Enter the Data Properly')
