@@ -60,6 +60,11 @@ if st.button("Insert the data"):
 
 
 item_id = st.text_input('Enter the "item id" here you want to delete the data')
+delurl_list = sb.table(tab1).select('image_url').eq('id', item_id).execute()
+delurl = delurl_list[0]['image_url']
+st.text(delurl)
 
 if st.button('Delete Data'):
-    sb.table(tab1).delete().eq('id', item_id).execute()
+    st.text('Temp')
+    #sb.table(tab1).delete().eq('id', item_id).execute()
+    
