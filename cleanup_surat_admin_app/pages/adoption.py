@@ -51,11 +51,11 @@ try:
         st.success("Photo uploaded successfully")
     photourl = sb.storage.from_('items').get_public_url(photo.name)
     stat = st.text_input("Status")
+    st.text(photourl)
 
 except Exception:
     st.text('Enter the Data Properly')
 
-st.text(photourl)
 item_id = st.text_input('Enter the "item id" here you want to delete the data')
 
 if st.button('Delete Data'):
