@@ -43,14 +43,15 @@ cond = st.text_input("Condition")
 fnd_at = st.text_input("Found at")
 try:
     photo = st.file_uploader('Upload Image of item')
+    pname = photo.name.replace(' ', '_')
     if photo and st.button('Upload Image'):
         sb.storage.from_('items').upload(
-            path=photo.name.replace(' ','_'),
+            path=pname,
             file=photo.getvalue(),
             file_options={'content-type': photo.type, 'upsert': 'true'}
         )
         st.success("Photo uploaded successfully")
-    photourl = sb.storage.from_('items').get_public_url(photo.name)
+    photourl = sb.storage.from_('items').get_public_url(pname)
 except Exception:
     st.error('Enter the Photo First')
 stat = st.selectbox("Status", ['available','adopted'])
@@ -65,6 +66,6 @@ if st.button('Delete Data'):
     delurl = delurl_list[0]['image_url']
     delpath_list = delurl.split('/')
     delpath = delpath_list[-1]
-    st.text(delpath).replace('%','_')
+    st.text(delpath)
     sb.storage.from_('itmes').remove([delpath])
     sb.table(tab1).delete().eq('id', item_id).execute()
