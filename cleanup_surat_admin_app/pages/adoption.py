@@ -65,6 +65,7 @@ delurl = delurl_list[0]['image_url']
 st.text(delurl)
 
 if st.button('Delete Data'):
-    st.text('Temp')
+    delurl_list = sb.table(tab1).select('image_url').eq('id', item_id).execute()
+    #delurl = delurl_list[0]['image_url']
+    st.text(delurl_list)
     #sb.table(tab1).delete().eq('id', item_id).execute()
-    
