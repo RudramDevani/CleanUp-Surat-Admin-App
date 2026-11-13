@@ -57,7 +57,6 @@ try:
 except Exception:
     st.text('Enter the Data Properly')
 
-st.text(photourl)
 item_id = st.text_input('Enter the "item id" here you want to delete the data')
 
 if st.button('Delete Data'):
