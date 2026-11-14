@@ -9,6 +9,8 @@ st.set_page_config(page_title='CleanUp Admin')
 st.title('CleanUp Surat Admin App', text_alignment='center')
 st.text("Welcome to CleanUp Surat's Admin Page, here, this app will help you out in uploading images in your website, getting the data of volunteers, reported spot, item adoption, etc.")
 st.warning("use it wisely as the changes here will affect in the website too.")
+if st.button('Refresh Page'):
+    st.text('Page Refreshed')
 st.divider()
 
 pg = st.navigation([
@@ -22,9 +24,6 @@ pg = st.navigation([
     st.Page('pages/newsletter.py', title="Newsletters Inquiry")
 ])
 pg.run()
-
-if st.button('Refresh Page'):
-    st.text('Page Refreshed')
 
 st.divider()
 st.caption('Created For CleanUp Surat')
