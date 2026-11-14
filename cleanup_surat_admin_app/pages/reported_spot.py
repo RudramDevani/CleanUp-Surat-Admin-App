@@ -26,7 +26,7 @@ spt_id = st.text_input('Enter the "id" here you want to delete the data')
 if st.button('Delete The Data'):
 
     delurl_list = sb.table(tab).select('image_url').eq('id', spt_id).execute().data
-    if delurl_list[0]['image_url'] != None
+    if delurl_list[0]['image_url'] != None:
         delurl = delurl_list[0]['image_url']
         pathlist = delurl.split(',')
         path = []
