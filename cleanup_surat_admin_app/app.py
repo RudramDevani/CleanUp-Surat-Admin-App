@@ -22,6 +22,10 @@ pg = st.navigation([
     st.Page('pages/newsletter.py', title="Newsletters Inquiry")
 ])
 pg.run()
+
+if st.button('Refresh Page'):
+    st.text('Page Refreshed')
+
 st.divider()
 st.caption('Created For CleanUp Surat')
 st.caption('By Rudram Devani')
