@@ -24,18 +24,23 @@ st.dataframe(pd.DataFrame(rows), hide_index=True)
 spt_id = st.text_input('Enter the "id" here you want to delete the data')
 
 if st.button('Delete The Data'):
-    delurl_list = sb.table(tab).select('image_url').eq('id', spt_id).execute().data
-    delurl = delurl_list[0]['image_url']
-    pathlist = delurl.split(',')
-    path = []
-    for i in pathlist:
-        templist = i.split('/')
-        temppath = templist[-1]
-        path.append(temppath)
 
-    sb.table(tab).delete().eq('id', spt_id).execute()
-    sb.storage.from_('reports').remove(path)
-    st.success("Data removed")
+    delurl_list = sb.table(tab).select('image_url').eq('id', spt_id).execute().data
+    if delurl_list[0]['image_url'] != None
+        delurl = delurl_list[0]['image_url']
+        pathlist = delurl.split(',')
+        path = []
+        for i in pathlist:
+            templist = i.split('/')
+            temppath = templist[-1]
+            path.append(temppath)
+
+        sb.table(tab).delete().eq('id', spt_id).execute()
+        sb.storage.from_('reports').remove(path)
+        st.success("Data removed")
+    else:
+        sb.table(tab).delete().eq('id', spt_id).execute()
+        st.success("Data removed")
 
 # image getting
 
